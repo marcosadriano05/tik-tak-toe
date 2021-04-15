@@ -13,6 +13,8 @@
 
 Minigame produced with the purpose of training skills like JavaScript language, HTML, CSS, programming logic, DOM manipulation and frontend design.
 
+Link to the project: [Tik Tak Toe](https://marcosadriano05.github.io/tik-tak-toe)
+
 ## :rocket: Technologies
 
 - HTML
