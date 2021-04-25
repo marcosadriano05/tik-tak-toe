@@ -29,12 +29,15 @@ function play(button) {
   setButtonValue(button)
   disableButton(button)
   refreshGameState(button)
+  console.log(checkResult())
   endGame()
 }
 
 // Ao clicar num botão, seu valor deve ser atualizado
 function setButtonValue(button) {
-  button.textContent = currentPlayer()
+  const player = currentPlayer();
+  message.textContent = `Vez do jogador ${player}`
+  button.textContent = player
   isXPlayer = !isXPlayer
 }
 
@@ -70,6 +73,10 @@ function endGame() {
   const [isEndGame, result] = checkResult()
 
   if (isEndGame) {
+    message.textContent = result.length > 0 
+      ? `${currentPlayer() === 'X' ? 'O' : 'X'} é o vencedor!` 
+      : `Jogo empatado.`
+
     buttons.forEach((button, index) => {
       disableButton(button)
 
@@ -98,8 +105,8 @@ function checkResult() {
   if (gameState[3] === gameState[4] && gameState[4] === gameState[5]) return [true, [3, 4, 5]]
   if (gameState[6] === gameState[7] && gameState[7] === gameState[8]) return [true, [6, 7, 8]]
 
-  if (gameState[0] === gameState[3] && gameState[3] === gameState[6]) return [true, [0, 5, 6]]
-  if (gameState[1] === gameState[4] && gameState[4] === gameState[7]) return [true, [1, 4, 9]]
+  if (gameState[0] === gameState[3] && gameState[3] === gameState[6]) return [true, [0, 3, 6]]
+  if (gameState[1] === gameState[4] && gameState[4] === gameState[7]) return [true, [1, 4, 7]]
   if (gameState[2] === gameState[5] && gameState[5] === gameState[8]) return [true, [2, 5, 8]]
 
   if (gameState[0] === gameState[4] && gameState[4] === gameState[8]) return [true, [0, 4, 8]]
