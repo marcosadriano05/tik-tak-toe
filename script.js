@@ -1,81 +1,67 @@
-const allButtons = document.querySelectorAll("[data-square]")
-const message = document.querySelector("[data-message]")
-const reload = document.querySelector("[data-reload]")
+// Pegar os botões de marcação na DOM
+const buttons = document.querySelectorAll('[data-square]')
 
-let squares = {1: "a", 2: "b", 3: "c", 4: "d", 5: "e", 6: "f", 7: "g", 8: "h", 9: "i"};
-const players = {1: "X", 2: "O", current: 1}
-let count = 0
-let hasDraw = false
+// Estado inicial do jogo
+let isXPlayer = true
+let gameState = new Array(9).fill('')
 
-reload.addEventListener("click", () => window.location.reload());
-
-init()
-
-function init() {
-  allButtons.forEach(button => {
-    button.addEventListener("click", (e) => {
-      game(e, button)
-    })
+// Adicionar evento de click nos botões de marcação
+buttons.forEach(button => {
+  button.addEventListener('click', e => {
+    play(button)
+    console.log('oi')
   })
+})
+
+// Execução do jogo
+function play(button) {
+  setButtonValue(button)
+  disableClickedButton(button)
+  refreshGameState(button)
 }
 
-function game(e, button) {
-  addSquareValue(e, button)
-  button.setAttribute("disabled", true)  
-  button.style.cursor = "not-allowed"
-  button.style.background = "#ccc"
+// Ao clicar num botão, seu valor deve ser atualizado
+function setButtonValue(button) {
+  button.textContent = currentPlayer()
+  isXPlayer = !isXPlayer
+}
 
-  let [hasFinished, positions] = checkResult()
-  if (hasFinished || hasDraw) {
-    allButtons.forEach((button, index) => {
-      button.style.cursor = "not-allowed"
-      button.style.color = "#000"
-      button.setAttribute("disabled", true)
-      if (count === 9) {
-        message.textContent = `Jogo empatado`
-      } else {
-        message.textContent = `${players[players.current]} é o vencedor!`
-      }
-      reload.style.display = "block"
-      if (positions.indexOf(index) >= 0) {
-        button.style.background = "green"
-      } else {
-        button.style.background = "#FF4040"
-      }
-    })
-  } else {
-    players.current = checkCurrentPlayer(players.current)
-    message.textContent = `Vez do jogador ${players[players.current]}`
+// Verificar se o jogador é X ou O
+function currentPlayer() {
+  return isXPlayer ? 'X' : 'O'
+}
+
+// Atualizar estado do game
+function refreshGameState(button) {
+  let currentButton = button.dataset.square
+  
+  if (gameState[currentButton - 1] === '') {
+    gameState[currentButton - 1] = button.textContent
   }
 }
 
-function addSquareValue(e, button) {
-  squares[e.target.id] = players[players.current]
-  button.innerText = players[players.current]
-  count++
-  if (count === 9) {
-    hasDraw = true
+// Verificar se botão já foi acionado e desabilitá-lo
+function disableClickedButton(button) {
+  if (button.textContent !== '') {
+    button.setAttribute('disabled', true)
+    button.style.cursor = 'default'
   }
 }
 
-function checkCurrentPlayer(current) {
-  if (current === 1) return 2
-  return 1
-}
-
+// Verificar se há ganhador ou empate
 function checkResult() {
   let result = [false, []]
   
-  if (squares[1] === squares[2] && squares[2] === squares[3]) result = [true, [0, 1, 2]]
-  if (squares[4] === squares[5] && squares[5] === squares[6]) result = [true, [3, 4, 5]]
-  if (squares[7] === squares[8] && squares[8] === squares[9]) result = [true, [6, 7, 8]]
+  if (gameState[1] === gameState[2] && gameState[2] === gameState[3]) result = [true, [0, 1, 2]]
+  if (gameState[4] === gameState[5] && gameState[5] === gameState[6]) result = [true, [3, 4, 5]]
+  if (gameState[7] === gameState[8] && gameState[8] === gameState[9]) result = [true, [6, 7, 8]]
 
-  if (squares[1] === squares[4] && squares[4] === squares[7]) result = [true, [0, 5, 6]]
-  if (squares[2] === squares[5] && squares[5] === squares[8]) result = [true, [1, 4, 9]]
-  if (squares[3] === squares[6] && squares[6] === squares[9]) result = [true, [2, 5, 8]]
+  if (gameState[1] === gameState[4] && gameState[4] === gameState[7]) result = [true, [0, 5, 6]]
+  if (gameState[2] === gameState[5] && gameState[5] === gameState[8]) result = [true, [1, 4, 9]]
+  if (gameState[3] === gameState[6] && gameState[6] === gameState[9]) result = [true, [2, 5, 8]]
 
-  if (squares[1] === squares[5] && squares[5] === squares[9]) result = [true, [0, 4, 8]]
-  if (squares[3] === squares[5] && squares[5] === squares[7]) result = [true, [2, 4, 6]]
+  if (gameState[1] === gameState[5] && gameState[5] === gameState[9]) result = [true, [0, 4, 8]]
+  if (gameState[3] === gameState[5] && gameState[5] === gameState[7]) result = [true, [2, 4, 6]]
 
   return result
 }
