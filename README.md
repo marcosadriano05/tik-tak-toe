@@ -3,10 +3,7 @@
 ## :mag_right: Overview
 
 <div align="center">
-  <img height=300 src=".github/tela-inicial.png">
-  <img height=300 src=".github/durante-jogo.png">
-  <img height=300 src=".github/ganhador.png">
-  <img height=300 src=".github/empate.png">
+  <img src=".github/tik-tak-toe-responsive.gif">
 </div>
 
 ## :pushpin: About
