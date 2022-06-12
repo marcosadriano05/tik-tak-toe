@@ -34,7 +34,7 @@ export class TikTakToe {
     this.playerTwo = new Player("O", false)
   }
 
-  setValue(position) {
+  setSquareValue(position) {
     const key = this.checkSquareKeyByPosition(position)
     if (this.squares.get(key).value !== "") return
     

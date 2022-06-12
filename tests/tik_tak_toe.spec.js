@@ -42,9 +42,9 @@ describe("TikTakToe", () => {
 
   it("should set value of an selected square by position", () => {
     const game = new TikTakToe()
-    game.setValue(new Position(0, 2))
-    game.setValue(new Position(1, 1))
-    game.setValue(new Position(2, 0))
+    game.setSquareValue(new Position(0, 2))
+    game.setSquareValue(new Position(1, 1))
+    game.setSquareValue(new Position(2, 0))
 
     expect(game.squares.get(3).value).toEqual(game.playerOne.value)
     expect(game.squares.get(5).value).toEqual(game.playerTwo.value)
@@ -53,20 +53,20 @@ describe("TikTakToe", () => {
 
   it("should not set value of an selected square by position if it is setted before", () => {
     const game = new TikTakToe()
-    game.setValue(new Position(0, 2))
-    game.setValue(new Position(0, 2))
+    game.setSquareValue(new Position(0, 2))
+    game.setSquareValue(new Position(0, 2))
     
     expect(game.squares.get(3).value).toEqual(game.playerOne.value)
   })
 
   it("should change the players turn when set value", () => {
     const game = new TikTakToe()
-    game.setValue(new Position(0, 2))
+    game.setSquareValue(new Position(0, 2))
     
     expect(game.playerOne.itsTurn).toBeFalsy()
     expect(game.playerTwo.itsTurn).toBeTruthy()
 
-    game.setValue(new Position(1, 2))
+    game.setSquareValue(new Position(1, 2))
 
     expect(game.playerOne.itsTurn).toBeTruthy()
     expect(game.playerTwo.itsTurn).toBeFalsy()
