@@ -42,6 +42,10 @@ export class TikTakToe {
     square.value = this.playerOne.itsTurn ? this.playerOne.value : this.playerTwo.value
     this.squares.set(key, square)
 
+    this.changePlayerTurn()
+  }
+
+  changePlayerTurn() {
     this.playerOne.itsTurn = !this.playerOne.itsTurn
     this.playerTwo.itsTurn = !this.playerTwo.itsTurn
   }
