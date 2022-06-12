@@ -34,11 +34,13 @@ export class TikTakToe {
     this.playerTwo = new Player("O", false)
   }
 
-  setValue(value, position) {
+  setValue(position) {
     const key = this.checkSquareKeyByPosition(position)
     if (this.squares.get(key).value !== "") return
-      
-    this.squares.get(key).value = value
+    
+    const square = new Square(position.row, position.col)
+    square.value = this.playerOne.itsTurn ? this.playerOne.value : this.playerTwo.value
+    this.squares.set(key, square)
 
     this.playerOne.itsTurn = !this.playerOne.itsTurn
     this.playerTwo.itsTurn = !this.playerTwo.itsTurn
@@ -51,8 +53,6 @@ export class TikTakToe {
     if (position.row === 1) {
       return position.col + 1 + 3
     }
-    if (position.row === 2) {
-      return position.col + 1 + 6
-    }
+    return position.col + 1 + 6
   }
 }
