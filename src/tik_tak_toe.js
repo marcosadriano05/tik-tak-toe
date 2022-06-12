@@ -47,12 +47,6 @@ export class TikTakToe {
   }
 
   checkSquareKeyByPosition(position) {
-    if (position.row === 0) {
-      return position.col + 1
-    }
-    if (position.row === 1) {
-      return position.col + 1 + 3
-    }
-    return position.col + 1 + 6
+    return position.row * 3 + position.col + 1
   }
 }
