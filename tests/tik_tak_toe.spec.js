@@ -25,7 +25,7 @@ describe("TikTakToe", () => {
     const game = new TikTakToe()
     for (let i = 0; i < 3; i++) {
       for (let j = 0; j < 3; j++) {
-        const square = game.squares.some(square => {
+        const square = Array.from(game.squares.values()).some(square => {
           return square.position.row === i && square.position.col === j && square.value === ""
         })
         expect(square).toBeTruthy()
@@ -45,10 +45,10 @@ describe("TikTakToe", () => {
     game.setValue("X", new Position(0, 2))
     game.setValue("O", new Position(1, 1))
     game.setValue("X", new Position(2, 0))
-    
-    expect(game.squares[0, 2].value).toEqual("X")
-    expect(game.squares[1, 1].value).toEqual("O")
-    expect(game.squares[2, 0].value).toEqual("X")
+
+    expect(game.squares.get(3).value).toEqual("X")
+    expect(game.squares.get(5).value).toEqual("O")
+    expect(game.squares.get(7).value).toEqual("X")
   })
 
   it("should not set value of an selected square by position if it is setted before", () => {
@@ -56,6 +56,33 @@ describe("TikTakToe", () => {
     game.setValue("X", new Position(0, 2))
     game.setValue("O", new Position(0, 2))
     
-    expect(game.squares[0, 2].value).toEqual("X")
+    expect(game.squares.get(3).value).toEqual("X")
+  })
+
+  it("should change the players turn when set value", () => {
+    const game = new TikTakToe()
+    game.setValue("X", new Position(0, 2))
+    
+    expect(game.playerOne.itsTurn).toBeFalsy()
+    expect(game.playerTwo.itsTurn).toBeTruthy()
+
+    game.setValue("O", new Position(1, 2))
+
+    expect(game.playerOne.itsTurn).toBeTruthy()
+    expect(game.playerTwo.itsTurn).toBeFalsy()
+  })
+
+  it("should return the key number based on the position", () => {
+    const game = new TikTakToe()
+
+    expect(game.checkSquareKeyByPosition(new Position(0, 0))).toBe(1)
+    expect(game.checkSquareKeyByPosition(new Position(0, 1))).toBe(2)
+    expect(game.checkSquareKeyByPosition(new Position(0, 2))).toBe(3)
+    expect(game.checkSquareKeyByPosition(new Position(1, 0))).toBe(4)
+    expect(game.checkSquareKeyByPosition(new Position(1, 1))).toBe(5)
+    expect(game.checkSquareKeyByPosition(new Position(1, 2))).toBe(6)
+    expect(game.checkSquareKeyByPosition(new Position(2, 0))).toBe(7)
+    expect(game.checkSquareKeyByPosition(new Position(2, 1))).toBe(8)
+    expect(game.checkSquareKeyByPosition(new Position(2, 2))).toBe(9)
   })
 })

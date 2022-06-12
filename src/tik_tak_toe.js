@@ -21,12 +21,13 @@ export class Player {
 }
 
 export class TikTakToe {
-  squares = []
+  squares = new Map()
 
   constructor() {
+    let key = 0
     for (let i = 0; i < 3; i++) {
       for (let j = 0; j < 3; j++) {
-        this.squares.push(new Square(i, j))
+        this.squares.set(++key, new Square(i, j))
       }
     }
     this.playerOne = new Player("X", true)
@@ -34,8 +35,24 @@ export class TikTakToe {
   }
 
   setValue(value, position) {
-    if (this.squares[position.row, position.col].value === "") {
-      this.squares[position.row, position.col].value = value
+    const key = this.checkSquareKeyByPosition(position)
+    if (this.squares.get(key).value !== "") return
+      
+    this.squares.get(key).value = value
+
+    this.playerOne.itsTurn = !this.playerOne.itsTurn
+    this.playerTwo.itsTurn = !this.playerTwo.itsTurn
+  }
+
+  checkSquareKeyByPosition(position) {
+    if (position.row === 0) {
+      return position.col + 1
+    }
+    if (position.row === 1) {
+      return position.col + 1 + 3
+    }
+    if (position.row === 2) {
+      return position.col + 1 + 6
     }
   }
 }
