@@ -1,4 +1,4 @@
-import { TikTakToe, Square, Position } from "../src/tik_tak_toe"
+import { TikTakToe, Square, Position, Player } from "../src/tik_tak_toe"
 
 describe("Square", () => {
   it("should pass the position on creation and value is a empty string", () => {
@@ -7,6 +7,16 @@ describe("Square", () => {
     expect(square.position.row).toBe(1)
     expect(square.position.col).toBe(2)
     expect(square.value).toEqual("")
+  })
+})
+
+describe("Player", () => {
+  it("should pass the value and if is the game turn", () => {
+    const player = new Player("X", true)
+
+    expect(player.value).toEqual("X")
+    expect(player.winner).toBeFalsy()
+    expect(player.itsTurn).toBeTruthy()
   })
 })
 
@@ -21,6 +31,13 @@ describe("TikTakToe", () => {
         expect(square).toBeTruthy()
       }
     }
+  })
+
+  it("should create a game with two players with diferent values and turn values", () => {
+    const game = new TikTakToe()
+
+    expect(game.playerOne.value).not.toEqual(game.playerTwo.value)
+    expect(game.playerOne.itsTurn).not.toBe(game.playerTwo.itsTurn)
   })
 
   it("should set value of an selected square by position", () => {

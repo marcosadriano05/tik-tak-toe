@@ -12,6 +12,14 @@ export class Square {
   }
 }
 
+export class Player {
+  constructor(value, itsTurn) {
+    this.value = value
+    this.winner = false
+    this.itsTurn = itsTurn
+  }
+}
+
 export class TikTakToe {
   squares = []
 
@@ -21,6 +29,8 @@ export class TikTakToe {
         this.squares.push(new Square(i, j))
       }
     }
+    this.playerOne = new Player("X", true)
+    this.playerTwo = new Player("O", false)
   }
 
   setValue(value, position) {
