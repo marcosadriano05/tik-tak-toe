@@ -46,14 +46,13 @@ export class TikTakToe {
   }
 
   checkEndGame() {
-    const firstLine = this.squares.get(1).value === this.squares.get(2).value &&
-      this.squares.get(2).value === this.squares.get(3).value
-    const secondLine = this.squares.get(4).value === this.squares.get(5).value &&
-      this.squares.get(5).value === this.squares.get(6).value
-    const thirdLine = this.squares.get(7).value === this.squares.get(8).value &&
-      this.squares.get(8).value === this.squares.get(9).value
-    
-    if (firstLine || secondLine || thirdLine) return true
+    let lines = []
+    for (let i = 0; i < 3; i++) {
+      const hasSameValues = this.squares.get(i * 3 + 1).value === this.squares.get(i * 3 + 2).value &&
+      this.squares.get(i * 3 + 2).value === this.squares.get(i * 3 + 3).value
+      lines.push(hasSameValues)
+    }
+    if (lines.some(line => line)) return true
   }
 
   changePlayerTurn() {
