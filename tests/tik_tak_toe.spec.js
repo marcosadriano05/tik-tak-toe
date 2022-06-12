@@ -1,34 +1,4 @@
-class Position {
-  constructor(row, col) {
-    this.row = row
-    this.col = col
-  }
-}
-
-class Square {
-  constructor(row, col) {
-    this.position = new Position(row, col)
-    this.value = ""
-  }
-}
-
-class TikTakToe {
-  squares = []
-
-  constructor() {
-    for (let i = 0; i < 3; i++) {
-      for (let j = 0; j < 3; j++) {
-        this.squares.push(new Square(i, j))
-      }
-    }
-  }
-
-  setValue(value, position) {
-    if (this.squares[position.row, position.col].value === "") {
-      this.squares[position.row, position.col].value = value
-    }
-  }
-}
+import { TikTakToe, Square, Position } from "../src/tik_tak_toe"
 
 describe("Square", () => {
   it("should pass the position on creation and value is a empty string", () => {
