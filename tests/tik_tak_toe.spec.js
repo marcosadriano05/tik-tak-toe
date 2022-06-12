@@ -85,4 +85,24 @@ describe("TikTakToe", () => {
     expect(game.checkSquareKeyByPosition(new Position(2, 1))).toBe(8)
     expect(game.checkSquareKeyByPosition(new Position(2, 2))).toBe(9)
   })
+
+  it("should check end game returns true if horizontal lines have the same value", () => {
+    let game = new TikTakToe()
+    game.setSquareValue(new Position(0, 1))
+    game.setSquareValue(new Position(1, 1))
+    game.setSquareValue(new Position(0, 2))
+    game.setSquareValue(new Position(1, 2))
+    game.setSquareValue(new Position(0, 2))
+
+    expect(game.checkEndGame()).toBeTruthy()
+
+    game = new TikTakToe()
+    game.setSquareValue(new Position(0, 1))
+    game.setSquareValue(new Position(1, 1))
+    game.setSquareValue(new Position(2, 2))
+    game.setSquareValue(new Position(1, 2))
+    game.setSquareValue(new Position(1, 2))
+
+    expect(game.checkEndGame()).toBeFalsy()
+  })
 })
