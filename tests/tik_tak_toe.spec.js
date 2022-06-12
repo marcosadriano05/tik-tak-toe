@@ -22,6 +22,12 @@ class TikTakToe {
       }
     }
   }
+
+  setValue(value, position) {
+    if (this.squares[position.row, position.col].value === "") {
+      this.squares[position.row, position.col].value = value
+    }
+  }
 }
 
 describe("Square", () => {
@@ -45,5 +51,24 @@ describe("TikTakToe", () => {
         expect(square).toBeTruthy()
       }
     }
+  })
+
+  it("should set value of an selected square by position", () => {
+    const game = new TikTakToe()
+    game.setValue("X", new Position(0, 2))
+    game.setValue("O", new Position(1, 1))
+    game.setValue("X", new Position(2, 0))
+    
+    expect(game.squares[0, 2].value).toEqual("X")
+    expect(game.squares[1, 1].value).toEqual("O")
+    expect(game.squares[2, 0].value).toEqual("X")
+  })
+
+  it("should not set value of an selected square by position if it is setted before", () => {
+    const game = new TikTakToe()
+    game.setValue("X", new Position(0, 2))
+    game.setValue("O", new Position(0, 2))
+    
+    expect(game.squares[0, 2].value).toEqual("X")
   })
 })
