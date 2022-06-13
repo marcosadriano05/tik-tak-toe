@@ -21,6 +21,7 @@ export class TikTakToe {
     }
     this.playerOne = new Player("X", true)
     this.playerTwo = new Player("O", false)
+    this.status = "in_progress"
   }
 
   setSquareValue(squareNumber) {
