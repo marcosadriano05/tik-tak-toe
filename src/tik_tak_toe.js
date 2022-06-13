@@ -41,7 +41,10 @@ export class TikTakToe {
       && this.squares.get(i * 3 + 1).value !== ""
       lines.push(hasSameValues)
     }
-    if (lines.some(line => line)) return true
+    if (lines.some(line => line)) {
+      this.status = "finished"
+      return true
+    }
 
     lines = []
     for (let i = 0; i < 3; i++) {
@@ -50,15 +53,24 @@ export class TikTakToe {
         && this.squares.get(i + 1).value !== ""
       lines.push(hasSameValues)
     }
-    if (lines.some(line => line)) return true
+    if (lines.some(line => line)) {
+      this.status = "finished"
+      return true
+    }
 
     if (this.squares.get(1).value === this.squares.get(5).value
       && this.squares.get(5).value === this.squares.get(9).value
-      && this.squares.get(1).value !== "") return true
+      && this.squares.get(1).value !== "") {
+        this.status = "finished"
+        return true
+      }
     
     if (this.squares.get(3).value === this.squares.get(5).value
       && this.squares.get(5).value === this.squares.get(7).value
-      && this.squares.get(3).value !== "") return true
+      && this.squares.get(3).value !== "") {
+        this.status = "finished"
+        return true
+      }
 
     return false
   }

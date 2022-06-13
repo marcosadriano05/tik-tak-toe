@@ -132,4 +132,15 @@ describe("TikTakToe", () => {
 
     expect(game.playerOne.itsTurn).toBe(true)
   })
+
+  it("should set game status finished if end game returns true", () => {
+    const game = new TikTakToe()
+    game.setSquareValue(3)
+    game.setSquareValue(2)
+    game.setSquareValue(5)
+    game.setSquareValue(1)
+    game.setSquareValue(7)
+
+    expect(game.status).toEqual("finished")
+  })
 })
