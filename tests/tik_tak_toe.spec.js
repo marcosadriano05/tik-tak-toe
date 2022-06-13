@@ -168,4 +168,12 @@ describe("TikTakToe", () => {
 
     expect(game.playerOne.winner).toBe(true)
   })
+
+  it("should set player victory only if game status is finished", () => {
+    const game = new TikTakToe()
+    game.setPlayerVictory()
+
+    expect(game.playerOne.winner).toBe(false)
+    expect(game.playerTwo.winner).toBe(false)
+  })
 })
