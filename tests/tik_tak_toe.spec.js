@@ -13,8 +13,8 @@ describe("Player", () => {
     const player = new Player("X", true)
 
     expect(player.value).toEqual("X")
-    expect(player.winner).toBeFalsy()
-    expect(player.itsTurn).toBeTruthy()
+    expect(player.winner).toBe(false)
+    expect(player.itsTurn).toBe(true)
   })
 })
 
@@ -23,9 +23,9 @@ describe("TikTakToe", () => {
     const game = new TikTakToe()
     const squaresCreated = Array.from(game.squares.values())
     const hasEmptyString = squaresCreated.every(square => square.value === "")
-    
+
     expect(squaresCreated.length).toBe(9)
-    expect(hasEmptyString).toBeTruthy()
+    expect(hasEmptyString).toBe(true)
   })
 
   it("should create a game with two players with diferent values and turn values", () => {
@@ -58,13 +58,24 @@ describe("TikTakToe", () => {
     const game = new TikTakToe()
     game.setSquareValue(3)
     
-    expect(game.playerOne.itsTurn).toBeFalsy()
-    expect(game.playerTwo.itsTurn).toBeTruthy()
+    expect(game.playerOne.itsTurn).toBe(false)
+    expect(game.playerTwo.itsTurn).toBe(true)
 
     game.setSquareValue(6)
 
-    expect(game.playerOne.itsTurn).toBeTruthy()
-    expect(game.playerTwo.itsTurn).toBeFalsy()
+    expect(game.playerOne.itsTurn).toBe(true)
+    expect(game.playerTwo.itsTurn).toBe(false)
+  })
+
+  it("should check end game returns false if the game is not finished yet", () => {
+    const game = new TikTakToe()
+    game.setSquareValue(2)
+    game.setSquareValue(5)
+    game.setSquareValue(8)
+    game.setSquareValue(6)
+    game.setSquareValue(9)
+
+    expect(game.checkEndGame()).toBe(false)
   })
 
   it("should check end game returns true if horizontal lines have the same value", () => {
@@ -75,15 +86,6 @@ describe("TikTakToe", () => {
     game.setSquareValue(6)
     game.setSquareValue(1)
 
-    expect(game.checkEndGame()).toBeTruthy()
-
-    game = new TikTakToe()
-    game.setSquareValue(2)
-    game.setSquareValue(5)
-    game.setSquareValue(8)
-    game.setSquareValue(6)
-    game.setSquareValue(9)
-
-    expect(game.checkEndGame()).toBeFalsy()
+    expect(game.checkEndGame()).toBe(true)
   })
 })

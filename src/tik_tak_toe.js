@@ -41,6 +41,7 @@ export class TikTakToe {
       lines.push(hasSameValues)
     }
     if (lines.some(line => line)) return true
+    return false
   }
 
   changePlayerTurn() {
