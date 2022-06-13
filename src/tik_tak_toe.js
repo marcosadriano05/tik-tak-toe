@@ -51,7 +51,11 @@ export class TikTakToe {
       lines.push(hasSameValues)
     }
     if (lines.some(line => line)) return true
-    
+
+    if (this.squares.get(1).value === this.squares.get(5).value
+      && this.squares.get(5).value === this.squares.get(9).value
+      && this.squares.get(1).value !== "") return true
+
     return false
   }
 

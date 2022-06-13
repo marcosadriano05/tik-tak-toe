@@ -99,4 +99,15 @@ describe("TikTakToe", () => {
 
     expect(game.checkEndGame()).toBe(true)
   })
+
+  it("should check end game returns true if principal diagonal line has the same value", () => {
+    const game = new TikTakToe()
+    game.setSquareValue(1)
+    game.setSquareValue(2)
+    game.setSquareValue(5)
+    game.setSquareValue(3)
+    game.setSquareValue(9)
+
+    expect(game.checkEndGame()).toBe(true)
+  })
 })
