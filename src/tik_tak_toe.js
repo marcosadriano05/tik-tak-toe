@@ -30,7 +30,7 @@ export class TikTakToe {
     square.value = this.playerOne.itsTurn ? this.playerOne.value : this.playerTwo.value
     this.squares.set(squareNumber, square)
 
-    this.changePlayerTurn()
+    !this.checkEndGame() && this.changePlayerTurn()
   }
 
   checkEndGame() {

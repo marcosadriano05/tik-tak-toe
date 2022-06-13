@@ -121,4 +121,15 @@ describe("TikTakToe", () => {
 
     expect(game.checkEndGame()).toBe(true)
   })
+
+  it("should don't turn player if end game returns true", () => {
+    const game = new TikTakToe()
+    game.setSquareValue(3)
+    game.setSquareValue(2)
+    game.setSquareValue(5)
+    game.setSquareValue(1)
+    game.setSquareValue(7)
+
+    expect(game.playerOne.itsTurn).toBe(true)
+  })
 })
