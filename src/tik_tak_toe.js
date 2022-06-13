@@ -55,6 +55,10 @@ export class TikTakToe {
     if (this.squares.get(1).value === this.squares.get(5).value
       && this.squares.get(5).value === this.squares.get(9).value
       && this.squares.get(1).value !== "") return true
+    
+    if (this.squares.get(3).value === this.squares.get(5).value
+      && this.squares.get(5).value === this.squares.get(7).value
+      && this.squares.get(3).value !== "") return true
 
     return false
   }
