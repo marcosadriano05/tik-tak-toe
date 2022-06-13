@@ -218,4 +218,19 @@ describe("TikTakToe", () => {
 
     expect(game.status).toBe("draw")
   })
+
+  it("should game status be finished if all squares are filled but with a winner", () => {
+    const game = new TikTakToe()
+    game.setSquareValue(3)
+    game.setSquareValue(1)
+    game.setSquareValue(2)
+    game.setSquareValue(6)
+    game.setSquareValue(4)
+    game.setSquareValue(5)
+    game.setSquareValue(7)
+    game.setSquareValue(9)
+    game.setSquareValue(8)
+
+    expect(game.status).toBe("finished")
+  })
 })
