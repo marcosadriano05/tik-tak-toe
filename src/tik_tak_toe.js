@@ -1,13 +1,5 @@
-export class Position {
-  constructor(row, col) {
-    this.row = row
-    this.col = col
-  }
-}
-
 export class Square {
-  constructor(row, col) {
-    this.position = new Position(row, col)
+  constructor() {
     this.value = ""
   }
 }
@@ -24,23 +16,19 @@ export class TikTakToe {
   squares = new Map()
 
   constructor() {
-    let key = 0
-    for (let i = 0; i < 3; i++) {
-      for (let j = 0; j < 3; j++) {
-        this.squares.set(++key, new Square(i, j))
-      }
+    for (let i = 0; i < 9; i++) {
+        this.squares.set(i + 1, new Square())
     }
     this.playerOne = new Player("X", true)
     this.playerTwo = new Player("O", false)
   }
 
-  setSquareValue(position) {
-    const key = this.checkSquareKeyByPosition(position)
-    if (this.squares.get(key).value !== "") return
+  setSquareValue(squareNumber) {
+    if (this.squares.get(squareNumber).value !== "") return
     
-    const square = new Square(position.row, position.col)
+    const square = new Square()
     square.value = this.playerOne.itsTurn ? this.playerOne.value : this.playerTwo.value
-    this.squares.set(key, square)
+    this.squares.set(squareNumber, square)
 
     this.changePlayerTurn()
   }
@@ -58,9 +46,5 @@ export class TikTakToe {
   changePlayerTurn() {
     this.playerOne.itsTurn = !this.playerOne.itsTurn
     this.playerTwo.itsTurn = !this.playerTwo.itsTurn
-  }
-
-  checkSquareKeyByPosition(position) {
-    return position.row * 3 + position.col + 1
   }
 }
