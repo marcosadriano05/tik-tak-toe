@@ -81,7 +81,7 @@ export class TikTakToe {
 
     const squaresFilled = Array.from(this.squares.values()).every(square => square.value !== "")
     if (squaresFilled) {
-      this.status = "finished"
+      this.status = "draw"
       return true
     }
 
