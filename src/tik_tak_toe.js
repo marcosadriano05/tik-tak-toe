@@ -69,7 +69,7 @@ export class TikTakToe {
         this.status = "finished"
         this.setPlayerVictory()
         return true
-      }
+    }
     
     if (this.squares.get(3).value === this.squares.get(5).value
       && this.squares.get(5).value === this.squares.get(7).value
@@ -77,7 +77,13 @@ export class TikTakToe {
         this.status = "finished"
         this.setPlayerVictory()
         return true
-      }
+    }
+
+    const squaresFilled = Array.from(this.squares.values()).every(square => square.value !== "")
+    if (squaresFilled) {
+      this.status = "finished"
+      return true
+    }
 
     return false
   }
