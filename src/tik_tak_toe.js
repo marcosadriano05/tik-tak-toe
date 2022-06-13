@@ -25,6 +25,7 @@ export class TikTakToe {
   }
 
   setSquareValue(squareNumber) {
+    if (this.status === "finished") return
     if (this.squares.get(squareNumber).value !== "") return
     
     const square = new Square()

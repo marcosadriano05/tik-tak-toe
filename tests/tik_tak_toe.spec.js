@@ -149,4 +149,12 @@ describe("TikTakToe", () => {
 
     expect(game.status).toEqual("in_progress")
   })
+
+  it("should not set values if status is finished", () => {
+    const game = new TikTakToe()
+    game.status = "finished"
+    game.setSquareValue(7)
+
+    expect(game.squares.get(7).value).toEqual("")
+  })
 })
