@@ -90,6 +90,7 @@ export class TikTakToe {
 
   setPlayerVictory() {
     if (this.status !== "finished") return
+    if (this.playerOne.winner || this.playerTwo.winner) return
     this.playerOne.itsTurn ? this.playerOne.winner = true : this.playerTwo.winner = true
   }
 }

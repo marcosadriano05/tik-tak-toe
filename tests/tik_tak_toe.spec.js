@@ -176,4 +176,16 @@ describe("TikTakToe", () => {
     expect(game.playerOne.winner).toBe(false)
     expect(game.playerTwo.winner).toBe(false)
   })
+
+  it("should not set player victory after theres a winner", () => {
+    const game = new TikTakToe()
+    game.status = "finished"
+    game.playerOne.winner = true
+    game.playerOne.itsTurn = false
+    game.playerTwo.itsTurn = true
+    game.setPlayerVictory()
+
+    expect(game.playerOne.winner).toBe(true)
+    expect(game.playerTwo.winner).toBe(false)
+  })
 })
