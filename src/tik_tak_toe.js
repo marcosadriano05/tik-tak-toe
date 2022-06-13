@@ -36,11 +36,22 @@ export class TikTakToe {
   checkEndGame() {
     let lines = []
     for (let i = 0; i < 3; i++) {
-      const hasSameValues = this.squares.get(i * 3 + 1).value === this.squares.get(i * 3 + 2).value &&
-      this.squares.get(i * 3 + 2).value === this.squares.get(i * 3 + 3).value
+      const hasSameValues = this.squares.get(i * 3 + 1).value === this.squares.get(i * 3 + 2).value
+      && this.squares.get(i * 3 + 2).value === this.squares.get(i * 3 + 3).value
+      && this.squares.get(i * 3 + 1).value !== ""
       lines.push(hasSameValues)
     }
     if (lines.some(line => line)) return true
+
+    lines = []
+    for (let i = 0; i < 3; i++) {
+      const hasSameValues = this.squares.get(i + 1).value === this.squares.get(i + 4).value
+        && this.squares.get(i + 4).value === this.squares.get(i + 7).value
+        && this.squares.get(i + 1).value !== ""
+      lines.push(hasSameValues)
+    }
+    if (lines.some(line => line)) return true
+    
     return false
   }
 

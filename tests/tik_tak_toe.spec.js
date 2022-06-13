@@ -79,12 +79,23 @@ describe("TikTakToe", () => {
   })
 
   it("should check end game returns true if horizontal lines have the same value", () => {
-    let game = new TikTakToe()
+    const game = new TikTakToe()
     game.setSquareValue(2)
     game.setSquareValue(5)
     game.setSquareValue(3)
     game.setSquareValue(6)
     game.setSquareValue(1)
+
+    expect(game.checkEndGame()).toBe(true)
+  })
+
+  it("should check end game returns true if vertical lines have the same value", () => {
+    const game = new TikTakToe()
+    game.setSquareValue(1)
+    game.setSquareValue(2)
+    game.setSquareValue(4)
+    game.setSquareValue(3)
+    game.setSquareValue(7)
 
     expect(game.checkEndGame()).toBe(true)
   })
