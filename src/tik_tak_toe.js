@@ -45,6 +45,7 @@ export class TikTakToe {
     }
     if (lines.some(line => line)) {
       this.status = "finished"
+      this.setPlayerVictory()
       return true
     }
 
@@ -57,6 +58,7 @@ export class TikTakToe {
     }
     if (lines.some(line => line)) {
       this.status = "finished"
+      this.setPlayerVictory()
       return true
     }
 
@@ -64,6 +66,7 @@ export class TikTakToe {
       && this.squares.get(5).value === this.squares.get(9).value
       && this.squares.get(1).value !== "") {
         this.status = "finished"
+        this.setPlayerVictory()
         return true
       }
     
@@ -71,6 +74,7 @@ export class TikTakToe {
       && this.squares.get(5).value === this.squares.get(7).value
       && this.squares.get(3).value !== "") {
         this.status = "finished"
+        this.setPlayerVictory()
         return true
       }
 
@@ -80,5 +84,9 @@ export class TikTakToe {
   changePlayerTurn() {
     this.playerOne.itsTurn = !this.playerOne.itsTurn
     this.playerTwo.itsTurn = !this.playerTwo.itsTurn
+  }
+
+  setPlayerVictory() {
+    this.playerOne.itsTurn ? this.playerOne.winner = true : this.playerTwo.winner = true
   }
 }

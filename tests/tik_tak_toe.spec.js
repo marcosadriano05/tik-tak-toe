@@ -157,4 +157,15 @@ describe("TikTakToe", () => {
 
     expect(game.squares.get(7).value).toEqual("")
   })
+
+  it("should set winner equals true to current player if he's win", () => {
+    const game = new TikTakToe()
+    game.setSquareValue(3)
+    game.setSquareValue(2)
+    game.setSquareValue(5)
+    game.setSquareValue(1)
+    game.setSquareValue(7)
+
+    expect(game.playerOne.winner).toBe(true)
+  })
 })
