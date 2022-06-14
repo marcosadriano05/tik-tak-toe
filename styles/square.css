@@ -1,0 +1,33 @@
+.square {
+  position: relative;
+  font-size: 3rem;
+  width: 5rem;
+  height: 5rem;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  color: gray;
+  background-color: hsl(0, 0%, 95%);
+}
+
+.square:hover {
+  background: rgba(62, 242, 255, 0.9);
+}
+
+.square:focus {
+  border: 1px solid black;
+}
+
+.square.filled {
+  cursor: default;
+}
+
+.square.win {
+  color: black;
+  background: #61ff71;
+}
+
+.square.lose {
+  color: black;
+  background: #ff2929;
+}
