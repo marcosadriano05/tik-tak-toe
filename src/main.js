@@ -1,3 +1,8 @@
+const cssModule = await import('../styles/main.css', {
+  assert: { type: 'css' }
+});
+document.adoptedStyleSheets = [cssModule.default];
+
 import { TikTakToe } from "./tik_tak_toe.js"
 
 const board = document.querySelector(".board")
