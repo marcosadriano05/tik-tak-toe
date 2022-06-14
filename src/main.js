@@ -1,3 +1,4 @@
+import "../styles/main.css"
 import { TikTakToe } from "./tik_tak_toe.js"
 
 const board = document.querySelector(".board")
