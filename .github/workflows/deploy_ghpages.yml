@@ -20,4 +20,4 @@ jobs:
           cache: 'npm'
       
       - name: Run deploy script
-        run: git update-index --chmod=+x ./deploy.sh && ./deploy.sh
+        run: ./deploy.sh
