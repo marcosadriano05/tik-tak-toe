@@ -1,3 +1,4 @@
+import { describe, it, beforeEach, expect } from "vitest"
 import { TikTakToe, Square, Player } from "../src/tik_tak_toe"
 
 describe("Square", () => {

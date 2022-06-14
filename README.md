@@ -1,11 +1,5 @@
 # :video_game: Tik Tak Toe
 
-## :mag_right: Overview
-
-<div align="center">
-  <img src=".github/tik-tak-toe-responsive.gif">
-</div>
-
 ## :pushpin: About
 
 Minigame produced with the purpose of training skills like JavaScript language, HTML, CSS, programming logic, DOM manipulation and frontend design.
