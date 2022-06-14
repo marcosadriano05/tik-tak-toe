@@ -20,4 +20,4 @@ jobs:
           cache: 'npm'
       
       - name: Run deploy script
-        run: chmod +x ./deploy.sh && ./deplouy.sh
+        run: chmod +x ./deploy.sh && ./deploy.sh
