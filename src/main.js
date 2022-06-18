@@ -19,7 +19,7 @@ window.onload = () =>{
   init()
 }
 
-board.addEventListener("pointerdown", (e) => {
+board.addEventListener("click", (e) => {
   if (e.target.className === "board") return
   const square = Number(e.target.dataset.square)
   display.render(square)

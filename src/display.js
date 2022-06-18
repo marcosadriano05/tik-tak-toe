@@ -11,13 +11,16 @@ export class Display {
     for (let i = 0; i < 9; i++) {
       const square = document.createElement("button")
       square.dataset.square = i + 1
+      square.tabIndex = i + 1
       square.classList.add("square")
+      square.type = "button"
       this.board.appendChild(square)
       this.squares.push(square)
     }
 
     this.message.innerHTML = "Player: X"
     this.initButton.innerHTML = "Reboot"
+    this.initButton.tabIndex = 10
   }
 
   onWin() {
