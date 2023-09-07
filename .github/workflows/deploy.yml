@@ -21,15 +21,9 @@ jobs:
         run: npm run test run
 
       - name: Build
-        run: |
-          npm run build
-          rm -Rf -- .* !"(dist)"
-          cd dist
-          cp -r assets/ index.html ../
-          cd ..
-          rm -Rf dist
+        run: npm run build
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
