@@ -29,5 +29,4 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
-        inputs:
-          artifact_name: dist
+        artifact_name: dist
