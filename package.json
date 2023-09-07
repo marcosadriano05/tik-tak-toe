@@ -1,8 +1,8 @@
 {
   "devDependencies": {
-    "@types/node": "^17.0.42",
-    "vite": "^2.9.12",
-    "vitest": "^0.15.0"
+    "@types/node": "^20.5.9",
+    "vite": "^4.4.9",
+    "vitest": "^0.34.3"
   },
   "scripts": {
     "test": "vitest",
