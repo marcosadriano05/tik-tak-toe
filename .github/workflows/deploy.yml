@@ -23,7 +23,7 @@ jobs:
       - name: Build
         run: |
           npm run build
-          rm -Rf -- .* !(dist)
+          rm -Rf -- .* !( dist )
           cd dist
           cp -r assets/ index.html ../
           cd ..
