@@ -5,25 +5,18 @@
   },
   "type": "module",
   "description": "Tik Tak Toe game",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "main": "src/main.js",
-  "directories": {
-    "test": "tests"
-  },
   "keywords": [
     "tik-tak-toe",
     "game"
   ],
-  "author": "Marcos Adriano",
+  "author": "Marcos Adriano <marcosadriano740@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "vitest",
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "test": "node --test"
   },
   "devDependencies": {
-    "vite": "^5.0.10",
-    "vitest": "^1.1.1"
+    "@types/node": "^20.10.8"
   }
 }
