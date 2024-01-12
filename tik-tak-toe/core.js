@@ -1,11 +1,27 @@
 /**
+ * @class Exception for the wrong number of fields.
+ * @extends Error
+ */
+export class InvalidFieldNumberException extends Error {
+  /**
+   * Returns an instance of InvalidFieldNumberException.
+   * @param {string} message Exception message.
+   */
+  constructor(message) {
+    super(message)
+    this.name = "InvalidFieldNumberException"
+  }
+}
+
+/**
  * Fill all the fields with empty string and with the given length.
  * @param {number} fieldsQuantity 
  * @returns {string[]}
+ * @throws InvalidFieldNumberException
  */
 export const initFieldsState = (fieldsQuantity) => {
   if (!Number.isInteger(Math.sqrt(fieldsQuantity))) {
-    throw new Error("The number should be a square number")
+    throw new InvalidFieldNumberException("The number should be a square number")
   }
   let arr = []
   for (let i = 0; i < fieldsQuantity; i++) {

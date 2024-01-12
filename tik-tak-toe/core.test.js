@@ -2,7 +2,7 @@ import { describe, it } from "node:test"
 import assert from "node:assert"
 import { shouldThrow } from "../test/utils.js"
 
-import { initFieldsState, insertValueOnPosition, hasWinner } from "./tik-tak-toe.js"
+import { initFieldsState, insertValueOnPosition, hasWinner } from "./core.js"
 
 describe("Initial Fields State", () => {
   it("should return an array with the same given length containing empty strings", () => {
